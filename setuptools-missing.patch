@@ -1,0 +1,9 @@
+--- setuptools-54.2.0/docs/_templates/tidelift-sidebar.html.orig	1970-01-01 01:00:00.000000000 +0100
++++ setuptools-54.2.0/docs/_templates/tidelift-sidebar.html	2021-12-16 22:44:13.068337307 +0100
+@@ -0,0 +1,6 @@
++<h3 class="donation">For Enterprise</h3>
++
++<p>
++Professionally-supported {{ project }} is available with the
++<a href="https://tidelift.com/subscription/pkg/pypi-{{ project }}?utm_source=pypi-{{ project }}&utm_medium=referral">Tidelift Subscription</a>.
++</p>
