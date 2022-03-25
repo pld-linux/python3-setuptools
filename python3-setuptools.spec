@@ -69,7 +69,7 @@ BuildRequires:	python3-rst.linker >= 1.9
 BuildRequires:	python3-setuptools >= 1:34
 BuildRequires:	python3-sphinx_inline_tabs
 %endif
-%{?with_bootstrap:BuildRequires:	rpm-pythonprov}
+%{!?with_bootstrap:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
 Requires:	python3-modules >= 1:3.6
