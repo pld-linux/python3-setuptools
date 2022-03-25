@@ -17,7 +17,7 @@ Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
 Version:	54.2.0
-Release:	1.1
+Release:	
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
