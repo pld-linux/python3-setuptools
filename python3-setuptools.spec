@@ -68,6 +68,7 @@ BuildRequires:	python3-rst.linker >= 1.9
 #BuildRequires:	python3-pygments-github-lexers >= 0.0.5
 BuildRequires:	python3-setuptools >= 1:34
 BuildRequires:	python3-sphinx_inline_tabs
+BuildRequires:	python3-wheel
 %endif
 %{!?with_bootstrap:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.714
