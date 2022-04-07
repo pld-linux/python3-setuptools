@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# Sphinx based documentation
+%bcond_with	apidocs		# Sphinx based documentation
 %bcond_with	system_libs	# use system modules (appdirs, packaging, pyparsing) # TODO
 %bcond_with	tests		# py.test tests (few failures)
 %bcond_with	bootstrap	# convenience alias for without: apidocs,system_libs,tests
@@ -17,7 +17,7 @@ Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
 Version:	54.2.0
-Release:	2
+Release:	3
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
