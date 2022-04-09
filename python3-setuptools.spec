@@ -17,7 +17,7 @@ Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
 Version:	62.0.0
-Release:	0.1
+Release:	0.2
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
@@ -78,6 +78,7 @@ BuildRequires:	python3-wheel
 %{!?with_bootstrap:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
+BuildConflicts:	python3-setuptools_scm
 Requires:	python3-modules >= 1:3.6
 %if %{with system_libs}
 # versions from pkg_resources/_vendor/vendored.txt
