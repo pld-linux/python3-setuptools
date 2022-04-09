@@ -16,14 +16,14 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	54.2.0
-Release:	3
+Version:	62.0.0
+Release:	0.1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
-Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	09f693b5d5ca8bf4fdb1da82f8110a9c
+Source0:	https://github.com/pypa/setuptools/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	7f932b83c8c74751a2f1e60cd569189b
 Patch0:		setuptools-missing.patch
 URL:		https://github.com/pypa/setuptools
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
@@ -61,13 +61,18 @@ BuildRequires:	python3-wheel
 %endif
 %if %{with apidocs}
 BuildRequires:	python3-Sphinx
+BuildRequires:	python3-furo
 BuildRequires:	python3-jaraco
 BuildRequires:	python3-jaraco.packaging >= 8.2
+BuildRequires:	python3-jaraco.tidelift
 BuildRequires:	python3-rst.linker >= 1.9
 # specified but not required(?)
 #BuildRequires:	python3-pygments-github-lexers >= 0.0.5
 BuildRequires:	python3-setuptools >= 1:34
+BuildRequires:	python3-sphinx_favicon
 BuildRequires:	python3-sphinx_inline_tabs
+BuildRequires:	python3-sphinxcontrib-towncrier
+BuildRequires:	python3-toml
 BuildRequires:	python3-wheel
 %endif
 %{!?with_bootstrap:BuildRequires:	rpm-pythonprov}
@@ -142,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/distutils-precedence.pth
 %{py3_sitescriptdir}/pkg_resources
 %{py3_sitescriptdir}/setuptools
-%{py3_sitescriptdir}/%{module}-%{version}-py*.egg-info
+%{py3_sitescriptdir}/%{module}-%{version}*py*.egg-info
 
 %if %{with apidocs}
 %files apidocs
