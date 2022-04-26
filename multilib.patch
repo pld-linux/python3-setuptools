@@ -1,0 +1,18 @@
+--- setuptools-62.0.0/setuptools/_distutils/sysconfig.py.orig	2022-04-26 23:24:21.684034857 +0200
++++ setuptools-62.0.0/setuptools/_distutils/sysconfig.py	2022-04-26 23:24:40.750464254 +0200
+@@ -170,13 +170,13 @@
+             prefix = plat_specific and EXEC_PREFIX or PREFIX
+ 
+     if os.name == "posix":
+-        if plat_specific or standard_lib:
++        if plat_specific or standard_lib or prefix != "/usr":
+             # Platform-specific modules (any module from a non-pure-Python
+             # module distribution) or standard Python library modules.
+             libdir = getattr(sys, "platlibdir", "lib")
+         else:
+             # Pure Python
+-            libdir = "lib"
++            libdir = "share"
+         implementation = 'pypy' if IS_PYPY else 'python'
+         libpython = os.path.join(prefix, libdir,
+                                  implementation + get_python_version())

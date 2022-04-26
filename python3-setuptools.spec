@@ -17,7 +17,7 @@ Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
 Version:	62.0.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
@@ -25,6 +25,7 @@ Group:		Development/Languages/Python
 Source0:	https://github.com/pypa/setuptools/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
 # Source0-md5:	7f932b83c8c74751a2f1e60cd569189b
 Patch0:		setuptools-missing.patch
+Patch1:		multilib.patch
 URL:		https://github.com/pypa/setuptools
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
@@ -117,6 +118,7 @@ Dokumentacja API %{module}.
 %prep
 %setup -q -n %{module}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %if %{with system_libs}
 exit 1 # TODO: unvendor modules from pkg_resources/_vendor
