@@ -16,21 +16,21 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	65.3.0
+Version:	69.1.0
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
 Source0:	https://github.com/pypa/setuptools/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	5f9edb9878237788e08cda599aa012c7
+# Source0-md5:	7d560a2b55d345877238efe9bacdbcf9
 Patch0:		setuptools-missing.patch
 Patch1:		multilib.patch
 URL:		https://github.com/pypa/setuptools
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
-BuildRequires:	python3-modules >= 1:3.7
+BuildRequires:	python3-modules >= 1:3.8
 %{!?with_bootstrap:BuildRequires:	python3-setuptools >= 1:54}
 %if %{with system_libs}
 # versions from pkg_resources/_vendor/vendored.txt and setuptools/_vendor/vendored.txt
@@ -99,7 +99,7 @@ BuildRequires:	python3-toml
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
 BuildConflicts:	python3-setuptools_scm
-Requires:	python3-modules >= 1:3.7
+Requires:	python3-modules >= 1:3.8
 %if %{with system_libs}
 # versions from pkg_resources/_vendor/vendored.txt and setuptools/_vendor/vendored.txt
 Requires:	python3-appdirs >= 1.4.3
@@ -171,12 +171,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_install
 
+#???
+rm -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/build-3/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.rst LICENSE README.rst
+%doc LICENSE NEWS.rst README.rst
 %{py3_sitescriptdir}/_distutils_hack
 %{py3_sitescriptdir}/distutils-precedence.pth
 %{py3_sitescriptdir}/pkg_resources
