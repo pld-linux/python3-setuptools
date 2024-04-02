@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_with	apidocs		# Sphinx based documentation
-%bcond_with	system_libs	# use system modules (appdirs, jaraco.text, packaging, pyparsing...) # TODO
+%bcond_with	system_libs	# use system modules (appdirs, jaraco.text, packaging...) # TODO
 %bcond_with	tests		# py.test tests (few failures)
 %bcond_with	bootstrap	# no system modules, bootstrap egg-info without system setuptools
 
@@ -16,14 +16,14 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	69.1.0
+Version:	69.2.0
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
-Source0:	https://github.com/pypa/setuptools/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	7d560a2b55d345877238efe9bacdbcf9
+Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	940ffdb3a2ce4f6a5ee80032aa115fc7
 Patch0:		setuptools-missing.patch
 Patch1:		multilib.patch
 URL:		https://github.com/pypa/setuptools
@@ -34,53 +34,52 @@ BuildRequires:	python3-modules >= 1:3.8
 %{!?with_bootstrap:BuildRequires:	python3-setuptools >= 1:54}
 %if %{with system_libs}
 # versions from pkg_resources/_vendor/vendored.txt and setuptools/_vendor/vendored.txt
-BuildRequires:	python3-appdirs >= 1.4.3
-BuildRequires:	python3-importlib_metadata >= 4.11.1
-BuildRequires:	python3-importlib_resources >= 5.4.0
+BuildRequires:	python3-importlib_metadata >= 6.0.0
+BuildRequires:	python3-importlib_resources >= 5.10.2
 BuildRequires:	python3-jaraco.text >= 3.7.0
 BuildRequires:	python3-ordered-set >= 3.1.1
+BuildRequires:	python3-platformdirs >= 2.6.2
 BuildRequires:	python3-more_itertools >= 8.8.0
-BuildRequires:	python3-packaging >= 21.3
-BuildRequires:	python3-pyparsing >= 3.0.9
+BuildRequires:	python3-packaging >= 23.1
 BuildRequires:	python3-tomli >= 2.0.1
-BuildRequires:	python3-typing_extensions >= 4.0.1
+BuildRequires:	python3-typing_extensions >= 4.4.0
 BuildRequires:	python3-zipp >= 3.7.0
 %endif
 BuildConflicts:	python3-distribute < 0.7
 %if %{with tests}
-BuildRequires:	python3-Sphinx
 BuildRequires:	python3-build
 BuildRequires:	python3-coverage >= 4.5.1
 BuildRequires:	python3-filelock >= 3.4.0
-BuildRequires:	python3-flake8-2020
+BuildRequires:	python3-importlib_metadata
 BuildRequires:	python3-ini2toml >= 0.9
+BuildRequires:	python3-jaraco.develop >= 7.21
 BuildRequires:	python3-jaraco.envs >= 2.2
 BuildRequires:	python3-jaraco.path >= 3.2.0
-# FIXME: patch to use unittest.mock
-#BuildRequires:	python3-mock
-BuildRequires:	python3-paver
+BuildRequires:	python3-mypy >= 1.9
+BuildRequires:	python3-packaging >= 23.2
 BuildRequires:	python3-pip >= 19.1
 BuildRequires:	python3-pip_run >= 8.8
 BuildRequires:	python3-pytest >= 6
-BuildRequires:	python3-pytest-black >= 0.3.7
 BuildRequires:	python3-pytest-checkdocs >= 2.4
 BuildRequires:	python3-pytest-cov >= 2.5.1
-BuildRequires:	python3-pytest-enabler >= 1.3
-BuildRequires:	python3-pytest-flake8
-BuildRequires:	python3-pytest-flake8-2020
+BuildRequires:	python3-pytest-enabler >= 2.2
+BuildRequires:	python3-pytest-home
 BuildRequires:	python3-pytest-mypy >= 0.9.1
 BuildRequires:	python3-pytest-perf
-BuildRequires:	python3-pytest-xdist
+BuildRequires:	python3-pytest-ruff >= 0.2.1
+BuildRequires:	python3-pytest-timeout
+BuildRequires:	python3-pytest-xdist >= 3
 BuildRequires:	python3-virtualenv >= 13.0.0
 BuildRequires:	python3-tomli
 BuildRequires:	python3-tomli-w >= 1.0.0
 BuildRequires:	python3-wheel
 %endif
 %if %{with apidocs}
-BuildRequires:	python3-Sphinx
+BuildRequires:	python3-Sphinx >= 3.5
+BuildRequires:	python3-Sphinx < 7.2.5
 BuildRequires:	python3-furo
 BuildRequires:	python3-jaraco
-BuildRequires:	python3-jaraco.packaging >= 9
+BuildRequires:	python3-jaraco.packaging >= 9.3
 BuildRequires:	python3-jaraco.tidelift >= 1.4
 BuildRequires:	python3-pygments-github-lexers >= 0.0.5
 BuildRequires:	python3-rst.linker >= 1.9
@@ -88,30 +87,29 @@ BuildRequires:	python3-rst.linker >= 1.9
 #BuildRequires:	python3-pygments-github-lexers >= 0.0.5
 BuildRequires:	python3-setuptools >= 1:34
 BuildRequires:	python3-sphinx-hoverxref
-BuildRequires:	python3-sphinx-notfound-page >= 0.8.3
+BuildRequires:	python3-sphinx-notfound-page >= 1
+BuildRequires:	python3-sphinx-notfound-page < 2
 BuildRequires:	python3-sphinx-reredirects
 BuildRequires:	python3-sphinx_favicon
 BuildRequires:	python3-sphinx_inline_tabs
 BuildRequires:	python3-sphinxcontrib-towncrier
-BuildRequires:	python3-toml
+BuildRequires:	python3-tomli
 %endif
 %{!?with_bootstrap:BuildRequires:	rpm-pythonprov}
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
-BuildConflicts:	python3-setuptools_scm
 Requires:	python3-modules >= 1:3.8
 %if %{with system_libs}
 # versions from pkg_resources/_vendor/vendored.txt and setuptools/_vendor/vendored.txt
-Requires:	python3-appdirs >= 1.4.3
-Requires:	python3-importlib_metadata >= 4.11.1
-Requires:	python3-importlib_resources >= 5.4.0
+Requires:	python3-importlib_metadata >= 6.0.0
+Requires:	python3-importlib_resources >= 5.10.2
 Requires:	python3-jaraco.text >= 3.7.0
 Requires:	python3-ordered-set >= 3.1.1
+Requires:	python3-platformdirs >= 2.6.2
 Requires:	python3-more_itertools >= 8.8.0
-Requires:	python3-packaging >= 21.3
-Requires:	python3-pyparsing >= 3.0.9
+Requires:	python3-packaging >= 23.1
 Requires:	python3-tomli >= 2.0.1
-Requires:	python3-typing_extensions >= 4.0.1
+Requires:	python3-typing_extensions >= 4.4.0
 Requires:	python3-zipp >= 3.7.0
 %endif
 BuildArch:	noarch
