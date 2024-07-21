@@ -3,7 +3,7 @@
 @@ -237,13 +237,13 @@ def get_python_lib(plat_specific=0, stan
              prefix = plat_specific and EXEC_PREFIX or PREFIX
  
-     if os.name == "posix":
+     if os.name == "posix" or is_mingw():
 -        if plat_specific or standard_lib:
 +        if plat_specific or standard_lib or prefix != "/usr":
              # Platform-specific modules (any module from a non-pure-Python

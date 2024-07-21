@@ -16,14 +16,14 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	69.2.0
+Version:	71.0.4
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
 Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	940ffdb3a2ce4f6a5ee80032aa115fc7
+# Source0-md5:	956e2402c95b2439c812808d006255cd
 Patch0:		setuptools-missing.patch
 Patch1:		multilib.patch
 URL:		https://github.com/pypa/setuptools
@@ -168,9 +168,6 @@ cd docs
 rm -rf $RPM_BUILD_ROOT
 
 %py3_install
-
-#???
-rm -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/build-3/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
