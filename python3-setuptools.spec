@@ -142,8 +142,8 @@ Dokumentacja API %{module}.
 
 %prep
 %setup -q -n %{module}-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %if %{with system_libs}
 exit 1 # TODO: unvendor modules from pkg_resources/_vendor
