@@ -17,7 +17,7 @@ Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
 Version:	71.0.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
@@ -167,7 +167,7 @@ cd docs
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install %{?with_bootstrap:--optimize=0}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
