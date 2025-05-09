@@ -16,14 +16,14 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	79.0.0
+Version:	80.2.0
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
 Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	ba62178434fbd9e6dd0c085bd624ee42
+# Source0-md5:	32024ab37b52f98220c6453bbcbd535f
 Patch0:		setuptools-missing.patch
 Patch1:		multilib.patch
 URL:		https://github.com/pypa/setuptools
@@ -174,7 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE NEWS.rst README.rst
+%doc NEWS.rst README.rst
 %{py3_sitescriptdir}/_distutils_hack
 %{py3_sitescriptdir}/distutils-precedence.pth
 %{py3_sitescriptdir}/pkg_resources
