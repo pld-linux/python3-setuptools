@@ -1,8 +1,8 @@
---- setuptools-65.3.0/setuptools/_distutils/sysconfig.py.orig	2022-08-31 15:40:59.444208654 +0200
-+++ setuptools-65.3.0/setuptools/_distutils/sysconfig.py	2022-08-31 15:42:02.547200129 +0200
-@@ -237,13 +237,13 @@ def get_python_lib(plat_specific=0, stan
+--- setuptools-82.0.1/setuptools/_distutils/sysconfig.py.orig	2025-04-24 00:00:00.000000000 +0000
++++ setuptools-82.0.1/setuptools/_distutils/sysconfig.py	2025-04-24 00:00:00.000000000 +0000
+@@ -253,13 +253,13 @@ def get_python_lib(
              prefix = plat_specific and EXEC_PREFIX or PREFIX
- 
+
      if os.name == "posix" or is_mingw():
 -        if plat_specific or standard_lib:
 +        if plat_specific or standard_lib or prefix != "/usr":

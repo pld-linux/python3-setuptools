@@ -16,16 +16,15 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	80.9.0
+Version:	82.0.1
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
 Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	82e1d67883b713f9493659b50d13b436
-Patch0:		setuptools-missing.patch
-Patch1:		multilib.patch
+# Source0-md5:	2d7f1881d7a06abe7fa69412de30cda5
+Patch0:		multilib.patch
 URL:		https://github.com/pypa/setuptools
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
@@ -146,7 +145,6 @@ Dokumentacja API %{module}.
 %prep
 %setup -q -n %{module}-%{version}
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 %if %{with system_libs}
 exit 1 # TODO: unvendor modules from setuptools/_vendor
@@ -180,7 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS.rst README.rst
 %{py3_sitescriptdir}/_distutils_hack
 %{py3_sitescriptdir}/distutils-precedence.pth
-%{py3_sitescriptdir}/pkg_resources
 %{py3_sitescriptdir}/setuptools
 %{py3_sitescriptdir}/%{module}-%{version}*py*.egg-info
 
