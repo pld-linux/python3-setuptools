@@ -16,14 +16,14 @@
 Summary:	A collection of enhancements to the Python distutils
 Summary(pl.UTF-8):	Zestaw rozszerzeń dla pythonowych distutils
 Name:		python3-setuptools
-Version:	84.0.0
+Version:	84.2.1
 Release:	1
 Epoch:		1
 License:	MIT
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/setuptools/
 Source0:	https://files.pythonhosted.org/packages/source/s/setuptools/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	c6919a4b0862ca30604559e163a6cce9
+# Source0-md5:	251cbfc8f83414155e0e595cc4cffdd2
 Patch0:		multilib.patch
 URL:		https://github.com/pypa/setuptools
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
@@ -54,7 +54,7 @@ BuildRequires:	python3-jaraco.develop >= 7.21
 BuildRequires:	python3-jaraco.envs >= 2.2
 BuildRequires:	python3-jaraco.path >= 3.7.2
 BuildRequires:	python3-mypy >= 1.14
-BuildRequires:	python3-packaging >= 24.2
+BuildRequires:	python3-packaging >= 26.3
 BuildRequires:	python3-pip >= 19.1
 BuildRequires:	python3-pyproject_hooks
 BuildRequires:	python3-pytest >= 6
